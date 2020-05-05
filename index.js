@@ -101,7 +101,7 @@ function init() {
         for(var i=0;i<tmp.length;++i){
             result[i] = tmp[i].split(',');
             console.log(result[i]);
-            var bubble = new Bubble(result[0],result[1],result[2]);
+            var bubble = new Bubble(result[i][0],result[i][1],result[i][2]);
             var bubblePos = new THREE.Vector2( circleCenterPos.x+(Math.random()*100-50), circleCenterPos.y+(Math.random()*100-50) );
             bubble.setPosition(bubblePos);
             scene.add(bubble.getCSS3DObject());
