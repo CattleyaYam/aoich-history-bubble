@@ -1,0 +1,106 @@
+.bubbleBaseYellow {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(
+        ellipse farthest-side,
+        rgba(255,255,0,0.9) 0px,
+        rgba(255,255,0,0.9) 10px,
+        rgba(255,255,0,0.8) 20px,
+        rgba(255,255,0,0.6) 25px,
+        rgba(255,255,0,0.1) 30px
+    );
+}
+.bubbleBaseYellow .text{
+    position: absolute;
+    vertical-align: middle;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    line-height: 100%;
+    font-size:1px;
+}
+
+.bubbleBaseMagenta {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(
+        ellipse farthest-side,
+        rgba(255,0,127,0.9) 0px,
+        rgba(255,0,127,0.9) 10px,
+        rgba(255,0,127,0.8) 20px,
+        rgba(255,0,127,0.6) 25px,
+        rgba(255,0,127,0.1) 30px
+    );
+}
+.bubbleBaseMagenta .text {
+    position: absolute;
+    vertical-align: middle;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    line-height: 100%;
+    font-size:1px;
+}
+
+.bubbleBaseCyan {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(
+        ellipse farthest-side,
+        rgba(0,255,255,0.9) 0px,
+        rgba(0,255,255,0.9) 10px,
+        rgba(0,255,255,0.8) 20px,
+        rgba(0,255,255,0.6) 25px,
+        rgba(0,255,255,0.1) 30px
+    );
+}
+.bubbleBaseCyan .text {
+    position: absolute;
+    vertical-align: middle;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    line-height: 100%;
+    font-size:1px;
+}
+
+.imgElement{
+    width: 850px;
+    height: 1200px;
+    background-image: url(images/aoi.png);
+    background-repeat: no-repeat;
+}
+
+.imgElement .circle{
+    position: absolute;
+    left:490px;
+    top:200px;
+    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+    background: radial-gradient(
+        ellipse farthest-side,
+        rgba(255,255,255,1) 0px,
+        rgba(255,255,255,1) 45px,
+        rgba(255,255,255,0.8) 55px,
+        rgba(255,255,255,0.6) 60px,
+        rgba(255,255,255) 65px
+    );
+}
+
+.album1ImgElement{
+    width: 1200px;
+    height: 1200px;
+    background-image: url(images/album1.jpg);
+    background-repeat: no-repeat;
+    background-color: black;
+}
