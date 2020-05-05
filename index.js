@@ -40,8 +40,8 @@ class Bubble {
         this.element.appendChild(this.imgElement);
         
         this.css3dobject = new THREE.CSS3DObject( this.element );
-        this.css3dobject.position.x = position.x;
-        this.css3dobject.position.y = position.y;
+        this.css3dobject.position.x = this.position.x;
+        this.css3dobject.position.y = this.position.y;
         this.css3dobject.position.z = 10;
     }
 
@@ -99,7 +99,7 @@ function init() {
         var tmp = req.responseText.split("\n");
         for(var i=0;i<tmp.length;++i){
             result[i] = tmp[i].split(',');
-            
+            console.log(result[i]);
             var bubble = new Bubble(result[0],result[1],result[2]);
             var bubblePos = new THREE.Vector2( circleCenterPos.x+(Math.random()*100-50), circleCenterPos.y+(Math.random()*100-50) );
             bubble.setPosition(bubblePos);
