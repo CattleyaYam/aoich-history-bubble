@@ -1,19 +1,17 @@
-var camera, scene, renderer;
-var controls;
-var bubbles = [];
-var clock;
+let camera, scene, renderer;
+let controls;
+let bubbles = [];
+let clock;
 
-var circleCenterPos = new THREE.Vector2(2600,6700);
-var circleRadius = 1100;
-var mass = 1;
-var viscosity = 0.001016;
-var springConst = (viscosity*viscosity) / (4*mass*0.707*0.707);
-var r = 30;
-var d0 = r*2;
-var d1 = d0 * 1.4;
-var offset = 100000000000000;
-
-var search;
+const circleCenterPos = new THREE.Vector2(2600,6700);
+const circleRadius = 1100;
+const mass = 1;
+const viscosity = 0.001016;
+const springConst = (viscosity*viscosity) / (4*mass*0.707*0.707);
+const r = 30;
+const d0 = r*2;
+const d1 = d0 * 1.4;
+const offset = 100000000000000;
 
 class Bubble {
     constructor(title, url, publishDate) {
@@ -35,7 +33,8 @@ class Bubble {
             this.element.className = "bubbleBaseCyan";
         }
 
-        var playid = url.substr(-11);
+        var tmp = new String(url);
+        var playid = tmp.substr(-11);
         this.imgElement = document.createElement('img');
         this.imgElement.src = "http://img.youtube.com/vi/"+playid+"/0.jpg";
         this.element.appendChild(this.imgElement);
