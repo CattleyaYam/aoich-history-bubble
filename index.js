@@ -16,13 +16,13 @@ var offset = 100000000000000;
 var search;
 
 class Bubble {
-    constructor(title, url, publishDate, position, velocity) {
+    constructor(title, url, publishDate) {
         //parameter
         this.title = title;
         this.url = url;
         this.publishDate = publishDate;
-        this.position = position;
-        this.velocity = velocity;
+        this.position = new THREE.Vector2();
+        this.velocity = new THREE.Vector2();
 
         //css3dobject
         this.element = document.createElement('div');
@@ -100,13 +100,13 @@ function init() {
         var tmp = req.responseText.split("\n");
         for(var i=0;i<tmp.length;++i){
             result[i] = tmp[i].split(',');
+            
+            var bubble = new Bubble(result[0],result[1],result[2]);
+            var bubblePos = new THREE.Vector2( circleCenterPos.x+(Math.random()*100-50), circleCenterPos.y+(Math.random()*100-50) );
+            bubble.setPosition(bubblePos);
+            scene.add(bubble.getCSS3DObject());
+            bubbles.push(bubble);
         }
-
-        var bubble = new Bubble();
-        var bubblePos = new THREE.Vector2( circleCenterPos.x+(Math.random()*100-50), circleCenterPos.y+(Math.random()*100-50) );
-        bubble.setPosition(bubblePos);
-        scene.add(bubble.getCSS3DObject());
-        bubbles.push(bubble);
     }
 
     //Load Background-image
