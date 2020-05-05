@@ -16,9 +16,11 @@ var offset = 100000000000000;
 var search;
 
 class Bubble {
-    constructor(text, count, position, velocity) {
+    constructor(title, url, publishDate, position, velocity) {
         //parameter
-        this.count = count;
+        this.title = title;
+        this.url = url;
+        this.publishDate = publishDate;
         this.position = position;
         this.velocity = velocity;
 
@@ -32,11 +34,12 @@ class Bubble {
         }else{
             this.element.className = "bubbleBaseCyan";
         }
-        this.textElement = document.createElement('div');
-        this.textElement.className = "text";
-        this.textElement.innerText = text;
-        this.textElement.style.fontSize = "1px";
-        this.element.appendChild(this.textElement);
+
+        var playid = url.substr(-11);
+        this.imgElement = document.createElement('img');
+        this.imgElement.src = "http://img.youtube.com/vi/"+playid+"/0.jpg";
+        this.element.appendChild(this.imgElement);
+        
         this.css3dobject = new THREE.CSS3DObject( this.element );
         this.css3dobject.position.x = position.x;
         this.css3dobject.position.y = position.y;
@@ -73,6 +76,7 @@ animate();
 onWindowResize();
  
 function init() {
+    //Init threejs
     camera = new THREE.PerspectiveCamera( 45, document.documentElement.clientWidth / document.documentElement.clientHeight, 1, 45000 );
     camera.position.z = 35000;
     scene = new THREE.Scene();
@@ -86,8 +90,8 @@ function init() {
     controls.noRotate = true;
     controls.addEventListener( 'change', render );
     window.addEventListener( 'resize', onWindowResize, false );
-    //renderer.domElement.addEventListener( 'mousedown', onMouseDown);
 
+    //Load CSV and create bubbles
     var req = new XMLHttpRequest();
     req.open("get", "data/aoi_movie.csv", true);
     req.send(null);
@@ -97,19 +101,15 @@ function init() {
         for(var i=0;i<tmp.length;++i){
             result[i] = tmp[i].split(',');
         }
-        console.log(result);
-    }
 
-    //Bubble
-    for(var i=0; i<427; i++) {
-        var bubble = new Bubble("TEST", 1, new THREE.Vector2(),new THREE.Vector2());
+        var bubble = new Bubble();
         var bubblePos = new THREE.Vector2( circleCenterPos.x+(Math.random()*100-50), circleCenterPos.y+(Math.random()*100-50) );
         bubble.setPosition(bubblePos);
         scene.add(bubble.getCSS3DObject());
         bubbles.push(bubble);
     }
 
-    //Background-image
+    //Load Background-image
     var imgElement = document.createElement( 'div' );
     imgElement.className = "imgElement";
     var circleElement = document.createElement( 'div' );
@@ -139,31 +139,6 @@ function onWindowResize() {
     renderer.setSize( document.documentElement.clientWidth, document.documentElement.clientHeight );
     render();
 }
-
-function getCSV(path){
-    
-}
-
-function convertCSVtoArray(str){
-    var result = [];
-    var tmp = str.split("\n");
-    for(var i=0;i<tmp.length;++i){
-        result[i] = tmp[i].split(',');
-    }
-}
-
-/*
-function onMouseDown() {
-    for(var i=0; i<10; i++) {
-        var bubble = new Bubble("TEST", 1, new THREE.Vector2(),new THREE.Vector2());
-        var bubblePos = new THREE.Vector2( circleCenterPos.x+(Math.random()*100-50), circleCenterPos.y+(Math.random()*100-50) );
-        bubble.setPosition(bubblePos);
-        scene.add(bubble.getCSS3DObject());
-        bubbles.push(bubble);
-        console.log("test");
-    }
-}
-*/
 
 function calcBetweenBubbleForce( d ) {
     if(d>=0 && d<=d1) {
