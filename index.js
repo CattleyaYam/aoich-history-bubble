@@ -86,10 +86,22 @@ function init() {
     controls.noRotate = true;
     controls.addEventListener( 'change', render );
     window.addEventListener( 'resize', onWindowResize, false );
-    renderer.domElement.addEventListener( 'mousedown', onMouseDown);
+    //renderer.domElement.addEventListener( 'mousedown', onMouseDown);
+
+    var req = new XMLHttpRequest();
+    req.open("get", "data/aoi_movie.csv", true);
+    req.send(null);
+    req.onload = function(){
+        var result = [];
+        var tmp = req.responseText.split("\n");
+        for(var i=0;i<tmp.length;++i){
+            result[i] = tmp[i].split(',');
+        }
+        console.log(result);
+    }
 
     //Bubble
-    for(var i=0; i<50; i++) {
+    for(var i=0; i<427; i++) {
         var bubble = new Bubble("TEST", 1, new THREE.Vector2(),new THREE.Vector2());
         var bubblePos = new THREE.Vector2( circleCenterPos.x+(Math.random()*100-50), circleCenterPos.y+(Math.random()*100-50) );
         bubble.setPosition(bubblePos);
@@ -108,30 +120,6 @@ function init() {
     imgObject.scale.x = 20;
     imgObject.scale.y = 20;
     scene.add(imgObject);
-
-    var album1Element = document.createElement( 'div' );
-    album1Element.className = "album1ImgElement";
-    var album1ImgObject = new THREE.CSS3DObject(album1Element);
-    album1ImgObject.rotation.set(0,Math.PI/5,0);
-    album1ImgObject.position.x = -0;
-    album1ImgObject.position.z = -0;
-    album1ImgObject.scale.x = 20;
-    album1ImgObject.scale.y = 20;
-    scene.add(album1ImgObject);
-
-    googleImageSearch("#葵の絵 Twitter");
-}
-
-function googleImageSearch(text){
-    search = new google.search.ImageSearch(); 
-    search.setSearchCompleteCallback(this, searchComplete, null);
-    search.execute(text);
-}
-function searchComplete() {
-    if (search.results && search.results.length > 0) {
-        var rnd = Math.floor(Math.random() * search.results.length); 
-        document.body.style.backgroundImage = "url('" + search.results[rnd]['url'] + "')"; 
-    }
 }
  
 function animate() {
@@ -152,6 +140,19 @@ function onWindowResize() {
     render();
 }
 
+function getCSV(path){
+    
+}
+
+function convertCSVtoArray(str){
+    var result = [];
+    var tmp = str.split("\n");
+    for(var i=0;i<tmp.length;++i){
+        result[i] = tmp[i].split(',');
+    }
+}
+
+/*
 function onMouseDown() {
     for(var i=0; i<10; i++) {
         var bubble = new Bubble("TEST", 1, new THREE.Vector2(),new THREE.Vector2());
@@ -162,6 +163,7 @@ function onMouseDown() {
         console.log("test");
     }
 }
+*/
 
 function calcBetweenBubbleForce( d ) {
     if(d>=0 && d<=d1) {
