@@ -36,7 +36,7 @@ class Bubble {
         var tmp = new String(url);
         var playid = tmp.substr(-11);
         this.imgElement = document.createElement('img');
-        this.imgElement.src = "http://img.youtube.com/vi/"+playid+"/0.jpg";
+        this.imgElement.src = "http://img.youtube.com/vi/"+playid+"/mqdefault.jpg";
         this.imgElement.loading = "lazy";
         console.log("http://img.youtube.com/vi/"+playid+"/0.jpg");
         this.element.appendChild(this.imgElement);
