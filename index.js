@@ -100,7 +100,7 @@ function forceDownload(blob, filename) {
       })
       .catch(e => console.error(e));
   }
-  downloadResource("http://img.youtube.com/vi/Nk-9BlTz1mA/mqdefault.jpg");
+  downloadResource("https://img.youtube.com/vi/Nk-9BlTz1mA/mqdefault.jpg");
  
 function animate() {
     requestAnimationFrame( animate );
