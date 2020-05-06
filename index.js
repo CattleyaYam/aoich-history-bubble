@@ -68,7 +68,7 @@ function init() {
         for(let i=0;i<1;++i){
             result[i] = tmp[i].split(',');
             playId = result[i][1].substr(-11);
-            let tmp2 = "http://img.youtube.com/vi/"+playId+"/mqdefault.jpg";
+            let tmp2 = "https://img.youtube.com/vi/"+playId+"/mqdefault.jpg";
             console.log(tmp2);
         }
     }
