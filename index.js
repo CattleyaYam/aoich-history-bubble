@@ -128,6 +128,7 @@ function animate() {
     camera.updateProjectionMatrix();
     controls.update();
     updateBubbles();
+    render();
 }
 
 function render() {
