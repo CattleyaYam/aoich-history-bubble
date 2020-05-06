@@ -30,7 +30,7 @@ function init() {
     controls.minDistance = 1;
     controls.maxDistance = 45000;
     controls.noRotate = true;
-    controls.addEventListener( 'change', render );
+    controls.addEventListener( 'change', animate );
     window.addEventListener( 'resize', onWindowResize, false );
 
     //Load Background-image
@@ -44,10 +44,6 @@ function init() {
 function animate() {
     requestAnimationFrame( animate );
     controls.update();
-    render();
-}
-
-function render() {
     renderer.render( scene, camera );
 }
 
